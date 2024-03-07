@@ -1,0 +1,13 @@
+version: "3"
+services:
+  ubersnap:
+    container_name: ubersnap
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./public-static:/code/public-static
+      - ./config.yml:/code/config.yml
+    ports:
+      - 8000:8000
+    restart: unless-stopped

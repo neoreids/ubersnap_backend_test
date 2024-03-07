@@ -1,0 +1,4 @@
+production: false
+secret_key: keycode
+server:
+  port: 8000

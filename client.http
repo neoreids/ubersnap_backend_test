@@ -1,0 +1,16 @@
+###
+POST http://localhost:8000/public/auth/login
+Content-Type: application/json
+
+
+{
+"email": "neo.reids@gmail.com",
+"password": "administrator"
+}
+
+###
+GET http://localhost:8000/protected/user/profile
+Authorization: Bearer jwttoken
+
+###
+GET http://localhost:8000/protected/user/admin
