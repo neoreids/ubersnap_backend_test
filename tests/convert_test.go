@@ -8,7 +8,7 @@ import (
 )
 
 func TestConvert(t *testing.T) {
-	file, err := os.Open(Image5MB)
+	file, err := os.Open("./Sample-png-image-500kb.png")
 	if err != nil {
 		t.Fatalf("error open image file test : %v", err)
 	}

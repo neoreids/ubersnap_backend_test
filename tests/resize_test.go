@@ -9,9 +9,9 @@ import (
 )
 
 var ImageLogic = new(logic.ImageRouteLogic)
-var Image5MB = "./Sample-png-image-5mb.png"
+var Image2MB = "./Sample-jpg-image-2mb.jpg"
 func TestResize(t *testing.T) {
-	file, err := os.Open(Image5MB)
+	file, err := os.Open(Image2MB)
 	if err != nil {
 		t.Fatalf("error open image file test : %v", err)
 	}
