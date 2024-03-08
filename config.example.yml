@@ -2,3 +2,8 @@ production: false
 secret_key: keycode
 server:
   port: 8000
+mimes_image:
+  - image/png
+  - image/jpeg
+  - image/svg+xml
+  - image/webp
