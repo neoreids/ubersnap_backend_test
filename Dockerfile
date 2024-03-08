@@ -12,7 +12,8 @@ RUN apk update && apk add --no-cache \
 ENV GO111MODULE=on \
     CGO_ENABLED=1 \
     GOOS=linux \
-    GOARCH=amd64
+    GOARCH=amd64 \
+    GOFLAGS="-count=1"
 
 # Set the working directory inside the container
 WORKDIR /app
