@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./public-static:/code/public-static
-      - ./config.yml:/code/config.yml
+      - ./public-static:/app/public-static
+      - ./config.yml:/app/config.yml
     ports:
       - 8000:8000
     restart: unless-stopped
