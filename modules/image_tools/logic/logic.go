@@ -9,6 +9,7 @@ import (
 	_ "image/gif"
 	_ "image/jpeg"
 	_ "image/png"
+	"io/ioutil"
 	"path/filepath"
 	"strconv"
 	"ubersnap/modules/image_tools/dto"
@@ -70,7 +71,7 @@ func (a *ImageRouteLogic) Compress(req *dto.ImageCompressRequest) *utilities.Res
 
 	outputFilename := fmt.Sprintf("%s/%s", static.PUBLIC_DIR, newName)
 	// compress image
-	fileMat, ok, errCompress := a.CompressImage(req.File, req.Quality, outputFilename)
+	fileMat, bufferCompressed, errCompress := a.CompressImage(req.File, req.Quality, newName)
 	if errCompress != nil {
 		return &utilities.ResponseRequest{
 			Error: errCompress,
@@ -81,9 +82,10 @@ func (a *ImageRouteLogic) Compress(req *dto.ImageCompressRequest) *utilities.Res
 		_ = fileMat.Close()
 	}(fileMat)
 
-	if !ok {
+	err := ioutil.WriteFile(outputFilename, bufferCompressed.GetBytes(), 0644)
+	if err != nil {
 		return &utilities.ResponseRequest{
-			Error: static.FAILED_COMPRESS_IMAGE,
+			Error: static.FAILED_SAVE_IMAGE,
 		}
 	}
 
